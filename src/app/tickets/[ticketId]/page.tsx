@@ -9,7 +9,8 @@ type TicketPageProps = {
 };
 
 const TicketPage = async ({ params }: TicketPageProps) => {
-  const ticket = await getTicket(params.ticketId);
+  const { ticketId } = params;
+  const ticket = await getTicket(ticketId);
 
   if (!ticket) {
     notFound();
