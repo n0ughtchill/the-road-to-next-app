@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
+"use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
 import { Ticket } from "@/generated/prisma";
 import { upsertTicket } from "../actions/upsert-ticket";
-
+import { SubmitButton } from "@/components/form/submit-button";
 type TicketUpsertFormProps = {
   ticket?: Ticket;
 };
@@ -23,7 +22,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       <Label htmlFor="context">Context</Label>
       <Textarea id="content" name="content" defaultValue={ticket?.content} />
 
-      <Button type="submit">{ticket ? "Edit" : "Create"}</Button>
+      <SubmitButton label={ticket ? "Edit" : "Create"} />
     </form>
   );
 };
