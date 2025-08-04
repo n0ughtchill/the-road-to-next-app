@@ -11,10 +11,10 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
+  ...compat.config({
+    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
     plugins: {
-      "simple-import-sort": simpleImportSort,
+      "simple-import-sort": [simpleImportSort],
     },
     rules: {
       "simple-import-sort/imports": [
@@ -23,9 +23,8 @@ const eslintConfig = [
           groups: [["^\\u0000", "^@?\\w", "^[^.]", "^\\."]],
         },
       ],
-      "simple-import-sort/exports": "error",
     },
-  },
+  }),
 ];
 
 export default eslintConfig;
