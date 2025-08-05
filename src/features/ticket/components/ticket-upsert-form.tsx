@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "sonner";
 import { useActionState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,8 @@ import { SubmitButton } from "@/components/form/submit-button";
 import { FieldError } from "@/components/form/field-error";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
+import { Form } from "@/components/form/form";
+
 type TicketUpsertFormProps = {
   ticket?: Ticket;
 };
@@ -19,17 +22,8 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
-  useActionFeedback(actionState, {
-    onSuccess: ({ actionState }) => {
-      console.log(actionState.message);
-    },
-    onError: ({ actionState }) => {
-      console.log(actionState.message);
-    },
-  });
-
   return (
-    <form action={action} className="flex flex-col gap-y-2">
+    <Form action={action} actionState={actionState}>
       <Input name="id" type="hidden" defaultValue={ticket?.id} />
       <Label htmlFor="title">Title</Label>
       <Input
@@ -53,7 +47,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       <FieldError actionState={actionState} name="content" />
 
       <SubmitButton label={ticket ? "Edit" : "Create"} />
-    </form>
+    </Form>
   );
 };
 export { TicketUpsertForm };

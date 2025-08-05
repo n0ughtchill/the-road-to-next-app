@@ -4,13 +4,12 @@ import { getTicket } from "@/features/ticket/queries/get-ticket";
 import { notFound } from "next/navigation";
 
 type TicketEditParams = {
-  params: {
-    ticketId: string;
-  };
+  params: Promise<{ ticketId: string }>;
 };
 
 const TicketEditPage = async ({ params }: TicketEditParams) => {
-  const ticket = await getTicket(params.ticketId);
+  const id = await params;
+  const ticket = await getTicket(id.ticketId);
 
   if (!ticket) notFound();
 
