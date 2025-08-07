@@ -1,3 +1,9 @@
 {
-  "cSpell.words": ["cuid"]
+  "cSpell.words": ["cuid"],
+  "workbench.editor.customLabels.patterns": {
+    "**/**.ts": "${dirname}/${filename}",
+    "**/**.tsx": "${dirname}/${filename}"
+  },
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true
 }
