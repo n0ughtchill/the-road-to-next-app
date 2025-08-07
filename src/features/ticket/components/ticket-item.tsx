@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
 import {
+  LucideMoreVertical,
   LucidePencil,
   LucideSquareArrowOutUpRight,
   LucideTrash,
@@ -19,6 +20,7 @@ import { ticketEditPath, ticketPath } from "@/paths";
 import { TICKET_ICONS } from "../../constants";
 import { deleteTicket } from "../actions/delete-ticket";
 import { toCurrencyFromCent } from "@/utils/currency";
+import { TicketMoreMenu } from "./ticket-more-menu";
 
 type TicketItemProps = {
   ticket: Ticket;
@@ -49,6 +51,12 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
       </Button>
     </form>
   );
+
+  const moreMenu = (
+    <TicketMoreMenu 
+      ticket={ticket} trigger={<Button variant="outline" size="icon">
+      <LucideMoreVertical className="h-4 w-4" />
+    </Button>} />)
 
   return (
     <div
@@ -85,6 +93,7 @@ const TicketItem = ({ ticket, isDetail }: TicketItemProps) => {
           <>
             {editButton}
             {deleteButton}
+            {moreMenu}
           </>
         ) : (
           <>
