@@ -1,7 +1,7 @@
+import { notFound } from "next/navigation";
 import { CardCompact } from "@/components/card-compact";
 import { TicketUpsertForm } from "@/features/ticket/components/ticket-upsert-form";
 import { getTicket } from "@/features/ticket/queries/get-ticket";
-import { notFound } from "next/navigation";
 
 type TicketEditParams = {
   params: Promise<{ ticketId: string }>;
