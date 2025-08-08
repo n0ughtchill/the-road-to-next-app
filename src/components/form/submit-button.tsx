@@ -1,6 +1,6 @@
+"use client";
 import { LucideLoaderCircle } from "lucide-react";
 import { useFormStatus } from "react-dom";
-import { Ticket } from "@/generated/prisma";
 import { Button } from "../ui/button";
 
 type SubmitButtonProps = {
