@@ -1,5 +1,5 @@
 import { getTickets } from "../queries/get-tickets";
-import { TicketItem } from "./ticket-item";
+import { TicketItem, TicketItemProps } from "./ticket-item";
 
 type TicketListProps = {
   userId?: string;
@@ -10,7 +10,7 @@ const TicketList = async ({ userId }: TicketListProps) => {
 
   return (
     <div className="flex-1 flex flex-col items-center gap-y-4 animate-fade-from-top">
-      {tickets.map((ticket) => (
+      {tickets.map((ticket: TicketItemProps["ticket"]) => (
         <TicketItem key={ticket.id} ticket={ticket} />
       ))}
     </div>

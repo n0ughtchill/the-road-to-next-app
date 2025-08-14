@@ -21,7 +21,7 @@ import { toCurrencyFromCent } from "@/utils/currency";
 import { TICKET_ICONS } from "../../constants";
 import { TicketMoreMenu } from "./ticket-more-menu";
 
-type TicketItemProps = {
+export type TicketItemProps = {
   ticket: Prisma.TicketGetPayload<{
     include: {
       user: {
