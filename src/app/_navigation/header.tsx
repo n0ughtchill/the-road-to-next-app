@@ -1,8 +1,10 @@
 "use client";
 import { LucideKanban } from "lucide-react";
 import Link from "next/link";
+
 import { useAuth } from "@/features/auth/hooks/use-auth";
 import { homePath, signInPath, signUpPath } from "@/paths";
+
 import { ThemeSwitcher } from "../../components/theme/theme-switcher";
 import { buttonVariants } from "../../components/ui/button";
 import { AccountDropdown } from "./account-dropdown";

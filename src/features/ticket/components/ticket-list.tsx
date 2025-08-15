@@ -1,23 +1,39 @@
-import { Input } from "@/components/ui/input";
+import { Placeholder } from "@/components/placeholder";
+import { SearchInput } from "@/components/search-input";
+import { SortSelect } from "@/components/sort-select";
+
 import { getTickets } from "../queries/get-tickets";
+import { SearchParams } from "../search-params";
 import { TicketItem, TicketItemProps } from "./ticket-item";
 
 type TicketListProps = {
   userId?: string;
+  searchParams: SearchParams;
 };
 
-const TicketList = async ({ userId }: TicketListProps) => {
-  const tickets = await getTickets(userId);
+const TicketList = async ({ userId, searchParams }: TicketListProps) => {
+  const tickets = await getTickets(userId, searchParams);
 
   return (
     <div className="flex-1 flex flex-col items-center gap-y-4 animate-fade-from-top">
-      <div className="max-w-[420px]">
-        <Input />
+      <div className="w-full max-w-[420px] flex gap-x-2">
+        <SearchInput placeholder="Search tickets..." />
+        <SortSelect
+          defaultValue="newest"
+          options={[
+            { label: "Newest", value: "newest" },
+            { label: "Bounty", value: "bounty" },
+          ]}
+        />
       </div>
 
-      {tickets.map((ticket: TicketItemProps["ticket"]) => (
-        <TicketItem key={ticket.id} ticket={ticket} />
-      ))}
+      {tickets.length ? (
+        tickets.map((ticket: TicketItemProps["ticket"]) => (
+          <TicketItem key={ticket.id} ticket={ticket} />
+        ))
+      ) : (
+        <Placeholder label="No tickets found" />
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { User as AuthUser } from "lucia";
 import { LucideLock, LucideLogOut, LucideUser } from "lucide-react";
 import Link from "next/link";
+
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,

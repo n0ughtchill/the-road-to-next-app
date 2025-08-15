@@ -1,4 +1,5 @@
 import { Heading } from "@/components/heading";
+
 import { AccountTabs } from "../_navigation/tabs";
 
 const ProfilePage = () => {

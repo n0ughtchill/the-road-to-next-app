@@ -14,12 +14,11 @@ const eslintConfig = [
     extends: ["next/core-web-vitals", "next/typescript", "prettier"],
     plugins: ["simple-import-sort"],
     rules: {
-      "simple-import-sort/imports": [
-        "error",
-        {
-          groups: [["^\\u0000", "^@?\\w", "^[^.]", "^\\."]],
-        },
-      ],
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error",
     },
   }),
 ];

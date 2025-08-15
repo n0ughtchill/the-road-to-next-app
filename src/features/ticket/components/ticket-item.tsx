@@ -5,6 +5,7 @@ import {
   LucideSquareArrowOutUpRight,
 } from "lucide-react";
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,6 +19,7 @@ import { isOwner } from "@/features/auth/utils/is-ownner";
 import { Prisma } from "@/generated/prisma";
 import { ticketEditPath, ticketPath } from "@/paths";
 import { toCurrencyFromCent } from "@/utils/currency";
+
 import { TICKET_ICONS } from "../../constants";
 import { TicketMoreMenu } from "./ticket-more-menu";
 
