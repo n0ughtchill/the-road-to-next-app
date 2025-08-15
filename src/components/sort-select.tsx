@@ -24,11 +24,12 @@ const SortSelect = ({ defaultValue, options }: SortSelectProps) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSort = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const handleSort = (value: string) => {
     const params = new URLSearchParams(searchParams);
 
-    if (value) {
+    if (value === defaultValue) {
+      params.delete("sort");
+    } else if (value) {
       params.set("sort", value);
     } else {
       params.delete("sort");
@@ -40,7 +41,10 @@ const SortSelect = ({ defaultValue, options }: SortSelectProps) => {
   };
 
   return (
-    <Select defaultValue={defaultValue}>
+    <Select
+      onValueChange={handleSort}
+      defaultValue={searchParams.get("sort")?.toString() || defaultValue}
+    >
       <SelectTrigger>
         <SelectValue />
       </SelectTrigger>
