@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { Header } from "@/app/_navigation/header";
 import { ThemeProvider } from "@/components/theme/theme-provider";
@@ -34,24 +35,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <div className="flex min-h-screen overflow-hidden border-collapse">
-            <Sidebar />
-            <Header />
-            <main
-              className="
+        <NuqsAdapter>
+          <ThemeProvider>
+            <div className="flex min-h-screen overflow-hidden border-collapse">
+              <Sidebar />
+              <Header />
+              <main
+                className="
           min-h-screen flex-1
           overflow-y-auto overflow-x-hidden
           py-24 px-8
           bg-secondary/20
           flex flex-col
           "
-            >
-              {children}
-            </main>
-          </div>
-          <Toaster expand />
-        </ThemeProvider>
+              >
+                {children}
+              </main>
+            </div>
+            <Toaster expand />
+          </ThemeProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );
